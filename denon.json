@@ -1,0 +1,35 @@
+{
+  "$schema": "https://deno.land/x/denon/schema.json",
+  
+  "env": {
+    "TOKEN": "SUPER SECRET TOKEN"
+  },
+  
+  "scripts": {
+    "start": {
+      "desc": "Run the main server",
+      "cmd": "server.ts",
+      "allow": [
+        "net",
+        "env"
+      ],
+      "env": {
+        "PORT": "3000"
+      },
+      "lock": "./lock.json"
+    },
+    "cache": {
+      "desc": "Cache versions and update lock file",
+      "cmd": "deno cache server.ts --lock-write",
+      "lock": "./lock.json"
+    }
+  },
+
+  "watcher": {
+    "skip": [
+      "./lock.json",
+      "./www",
+      "./README.md"
+    ]
+  }
+}
